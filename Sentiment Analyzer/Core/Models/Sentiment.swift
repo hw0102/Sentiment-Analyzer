@@ -23,6 +23,9 @@ enum Sentiment: String, Plottable {
 
 }
 
+//extension Sentiment {
+//    static let example: Self = .positive;
+//}
 
 extension Sentiment {
     

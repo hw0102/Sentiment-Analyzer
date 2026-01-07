@@ -8,13 +8,14 @@
 import Foundation
 
 struct Response: Identifiable {
-    let id: String;
+    let id: UUID = UUID();
     let text: String;
-    let score: String;
+    let sentiment: Sentiment;
 }
 
 extension Response {
-    static let samples: [String] = [
-        "hello", "world","how are you", "i love programming"
+    static let samples: [Response] = [
+        .init(text: "I love this job", sentiment: .positive),
+        .init(text: "I hate this job", sentiment: .negative)
     ]
 }
