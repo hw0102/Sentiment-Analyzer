@@ -20,12 +20,14 @@ struct ResponseRowView: View {
                 .padding(6)
                 .background(response.sentiment.color, in: RoundedRectangle(cornerRadius: 8))
         }
-        
-
+        .frame(minHeight: 60)
+        .padding()
+        .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 12))
+        .padding(.horizontal)
     }
 }
 
 #Preview {
     ResponseRowView(response: .samples[0])
-        .padding(.horizontal)
+        //.padding(.horizontal)
 }

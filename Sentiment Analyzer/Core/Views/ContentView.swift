@@ -11,7 +11,8 @@ import SwiftData
 struct ContentView: View {
     
     @State private var text = ""
-    @Query private var responses: [Response]
+    @Query(sort: \Response.date, order: .reverse) private var responses: [Response]
+    @Environment(\.modelContext) private var modelContext
     
     var body: some View {
         NavigationStack {
@@ -19,10 +20,11 @@ struct ContentView: View {
                 Text("Chart")
                 Text("Overview Section")
                 
+                ForEach(responses, id: \.self) { response in
+                    ResponseRowView(response: response)
+                }
+                
             }
-        }
-        .task {
-            
         }
         .safeAreaInset(edge: .bottom) {
             HStack {
@@ -31,8 +33,11 @@ struct ContentView: View {
                     .lineLimit(10)
                 
                 Button("Done") {
-                    print("hello")
+                    let score = Scorer.shared.score(text)
+                    modelContext.insert(Response(text: text, sentiment: .init(score)))
+                    text = ""
                 }
+                .disabled(text.isEmpty)
             }
             .padding()
             .background(Material.thin)

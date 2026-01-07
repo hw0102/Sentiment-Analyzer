@@ -23,4 +23,8 @@ struct Scorer {
         }
         return sentimentScore
     }
+    
+    static let shared = Scorer()
+    
+    private init() {}
 }

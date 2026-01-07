@@ -16,7 +16,7 @@ class Response {
         self.text = text
         self.sentiment = sentiment
     }
-    
+    var date: Date = Date()
     var text: String
     var sentiment: Sentiment
 }
