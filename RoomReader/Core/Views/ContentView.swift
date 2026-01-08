@@ -24,6 +24,7 @@ struct ContentView: View {
             ResponseRowListView(responses: responses, onSwipeDelete: { response in
                 modelContext.delete(response)
             })
+            .navigationTitle("RoomReader")
         }
         .sensoryFeedback(.impact, trigger: impactTrigger)
         .safeAreaInset(edge: .bottom) {
