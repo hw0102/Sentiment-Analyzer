@@ -16,14 +16,28 @@ struct SentimentChartView: View {
     var body: some View {
         Chart(chartData, id: \.sentiment) { item in
             SectorMark(
-                angle: .value("Value", item.count),
-                innerRadius: .ratio(0.618),
-                outerRadius: .inset(10),
-                angularInset: 1
+                angle: .value("Type", item.count),
+                innerRadius: .ratio(0.75),
+                //outerRadius: .inset(10),
+                //angularInset: 1
             )
-            .cornerRadius(4)
-            .foregroundStyle(item.sentiment.color)
+            //.cornerRadius(4)
+            .foregroundStyle(by: .value("sentiment", item.sentiment))
+            //.foregroundStyle(by: item.sentiment)
         }
+//        .overlay {
+//            Image(systemName: "location")
+//                .resizable()
+//                .frame(width: 48, height: 48)
+//        }
+        .chartLegend(position: .trailing, alignment: .center)
+        .chartForegroundStyleScale([
+            Sentiment.positive: Sentiment.positive.color,
+            Sentiment.moderate: Sentiment.moderate.color,
+            Sentiment.negative: Sentiment.negative.color
+        ])
+        .animation(.bouncy, value: sentiments)
+        .frame(height: 200)
     }
 
     

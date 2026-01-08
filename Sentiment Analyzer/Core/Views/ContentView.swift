@@ -17,24 +17,13 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            //ScrollView {
-                Text("Chart")
+            SentimentChartView(sentiments: responses.map(\.sentiment))
+            
                 Text("Overview Section")
                 
-                List {
-                    ForEach(responses, id: \.persistentModelID) { response in
-                        ResponseRowView(response: response)
-                            .swipeActions(edge: .trailing) {
-                                Button("Delete", role: .destructive) {
-                                    modelContext.delete(response)
-                                }
-                            }
-                    }
-                }
-                .listStyle(.plain)
-                .animation(.default, value: responses)
-                
-            //}
+            ResponseRowListView(responses: responses, onSwipeDelete: { response in
+                modelContext.delete(response)
+            })
         }
         .sensoryFeedback(.impact, trigger: impactTrigger)
         .safeAreaInset(edge: .bottom) {
