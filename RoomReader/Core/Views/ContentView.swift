@@ -19,6 +19,23 @@ struct ContentView: View {
         NavigationStack {
             SentimentChartView(sentiments: responses.map(\.sentiment))
                 .padding(.bottom, 8)
+                .overlay(alignment: .topTrailing) {
+                    Button("Delete All", role: .destructive) {
+                        withAnimation {
+                            responses.forEach { response in
+                                modelContext.delete(response)
+                            }
+                        }
+                        do {
+                            try modelContext.save()
+                        } catch {
+                            print("Unable to delete all responses: \(error)")
+                        }
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .disabled(responses.isEmpty)
+                    .safeAreaPadding()
+                }
             
             OverviewSentimentView(sentiments: responses.map(\.sentiment))
                 .navigationTitle("RoomReader")
