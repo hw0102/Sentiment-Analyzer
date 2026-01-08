@@ -1,6 +1,7 @@
 {
   "images" : [
     {
+      "filename" : "room_reader_icon_black_white_1024_centered.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
@@ -12,6 +13,7 @@
           "value" : "dark"
         }
       ],
+      "filename" : "room_reader_icon_black_white_1024_centered 1.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
@@ -23,6 +25,7 @@
           "value" : "tinted"
         }
       ],
+      "filename" : "room_reader_icon_black_white_1024_centered 2.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
