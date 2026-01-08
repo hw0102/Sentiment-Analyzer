@@ -23,6 +23,7 @@ struct ResponseRowListView: View {
                     }
             }
         }
+        .contentMargins(.bottom, 60)
         .listStyle(.plain)
         .overlay {
             if(responses.isEmpty) {
