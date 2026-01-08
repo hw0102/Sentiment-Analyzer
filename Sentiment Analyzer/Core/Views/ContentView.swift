@@ -19,7 +19,7 @@ struct ContentView: View {
         NavigationStack {
             SentimentChartView(sentiments: responses.map(\.sentiment))
             
-                Text("Overview Section")
+            OverviewSentimentView(sentiments: responses.map(\.sentiment))
                 
             ResponseRowListView(responses: responses, onSwipeDelete: { response in
                 modelContext.delete(response)
