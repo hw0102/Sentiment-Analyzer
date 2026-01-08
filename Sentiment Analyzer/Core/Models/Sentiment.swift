@@ -9,6 +9,7 @@ import Charts
 import SwiftUI
 
 enum Sentiment: String, Plottable, Codable {
+    
     case positive, moderate, negative
     
     init(_ score: Double) {
@@ -23,9 +24,9 @@ enum Sentiment: String, Plottable, Codable {
 
 }
 
-//extension Sentiment {
-//    static let example: Self = .positive;
-//}
+extension Sentiment {
+    static let examples: [Self] = [.positive, .negative, .positive, .moderate];
+}
 
 extension Sentiment {
     
